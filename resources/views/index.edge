@@ -1,21 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+  <link rel="canonical" href="https://cld.hiskia.app/" />
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cassava Leaf Disease Classificator</title>
+  <title>Caledi - Cassava Leaf Disease Classificator</title>
   @entryPointStyles('app')
   @entryPointScripts('app')
-</head>
-<body>
 
-  <main>
-    <div>
-      <h1 class="title"> Caledi! </h1>
-      <p class="subtitle">
-        Coming soon...
-      </p>
+  <!-- Meta SEO -->
+  <meta name="title" content="Caledi">
+  <meta name="description"
+    content="Caledi is a cassava leaf disease classificator. It uses machine learning to classify cassava leaf disease.">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <meta name="author" content="Hiskia">
+
+  <!-- Favicon -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+  <div class="max-w-screen-xl mx-auto px-5">
+
+    <header class="flex flex-col lg:flex-row justify-between items-center my-5">
+
+      <div class="flex w-full lg:w-auto items-center justify-between">
+        <a href="/" class="text-lg"><span class="font-bold text-slate-800">Cale</span><span
+            class="text-slate-500">di</span>
+        </a>
+      </div>
+    </header>
+
+  </div>
+
+  <div class="max-w-screen-xl mx-auto px-5" x-data="cam">
+    <main class="grid lg:grid-cols-1 place-items-center pt-16 pb-4 md:pt-12 md:pb-8">
+      <div>
+        <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+          Cassava Leaf Disease Classificator
+        </h1>
+        <p class="text-lg mt-4 text-slate-600 max-w-4xl" x-show="!started">
+          Caledi is a cassava leaf disease classificator. It uses machine learning to classify cassava leaf disease.
+          Using Tensorflow and Keras, Caledi can classify cassava leaf disease up to 85% accuracy.
+        </p>
+        <div class="mt-6 flex flex-col sm:flex-row gap-5" x-show="!started">
+          <a href="https://deepnote.com/@hiskia/Cassava-Leaf-Disease-Classification-b30f11c3-2bbd-411c-b0ce-4f371d417c44"
+            target="_blank" rel="noopener"
+            class="rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-5 py-2.5 bg-black text-white border-2 border-transparent flex gap-1 items-center justify-center">
+            <svg viewBox="0 0 24 24" class="text-white w-5 h-5" astro-icon="bx:bxs-cloud-download">
+              <path fill="currentColor"
+                d="M18.944 11.112C18.507 7.67 15.56 5 12 5 9.244 5 6.85 6.61 5.757 9.149 3.609 9.792 2 11.82 2 14c0 2.657 2.089 4.815 4.708 4.971V19H17.99v-.003L18 19c2.206 0 4-1.794 4-4a4.008 4.008 0 0 0-3.056-3.888zM8 12h3V9h2v3h3l-4 5-4-5z" />
+            </svg>
+            Deepnote
+          </a>
+          <a href="https://github.com/hiskiapp/caledi" rel="noopener" target="_blank"
+            class="rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-5 py-2.5 bg-white border-2 border-black text-black flex gap-1 items-center justify-center">
+            <svg viewBox="0 0 24 24" class="text-black w-4 h-4" astro-icon="bx:bxl-github">
+              <path fill="currentColor" fill-rule="evenodd"
+                d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z"
+                clip-rule="evenodd" />
+            </svg>
+            GitHub Repo
+          </a>
+        </div>
+      </div>
+    </main>
+    <div x-show="!started">
+      <h2 class="text-center text-slate-500">Works with technologies</h2>
+      <div class="flex gap-8 md:gap-20 items-center justify-center mt-10 flex-wrap">
+        <svg fill="#000000" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" class="h-8 md:h-12">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path
+              d="m10.22 11.506.111.018c-.038-.006-.075-.011-.111-.018zm4.475 8.073c.636-2.816-2.172-4.8-6.955-4.814L.713 24h9.586c.132-.025.256-.056.384-.085 2.258-1.057 3.598-2.501 4.012-4.336zM10.299 24h.203l.021-.01c-.075.003-.148.008-.224.01zM24 11.319C24 3.15 18.711-.597 8.134.077L0 11.319h7.568c3.323 0 8.457.719 8.457 6.153 0 3.622-1.909 5.798-5.727 6.528.099-.003.194-.009.291-.013l-.011.001-.076.012h.912l.247-.077C19.885 23.27 24 19.07 24 11.319z">
+            </path>
+          </g>
+        </svg>
+        <svg fill="#000000" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" class="h-8 md:h-12">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <title>tensorflow</title>
+            <path
+              d="M29.399 14.959l-0.017-6.636-12.806-7.319v29.991l5.117-2.972v-8.438l3.864 2.234-0.023-5.771-3.841-2.194v-3.35l7.708 4.454zM2.619 8.322l12.806-7.318v29.991l-5.117-2.972v-17.519l-7.708 4.454 0.019-6.636z">
+            </path>
+          </g>
+        </svg>
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-8 md:h-12">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path fill-rule="nonzero" clip-rule="nonzero"
+              d="M0 1.75C0 0.783501 0.783502 0 1.75 0H14.25C15.2165 0 16 0.783502 16 1.75V3.75C16 4.16421 15.6642 4.5 15.25 4.5C14.8358 4.5 14.5 4.16421 14.5 3.75V1.75C14.5 1.61193 14.3881 1.5 14.25 1.5H1.75C1.61193 1.5 1.5 1.61193 1.5 1.75V14.25C1.5 14.3881 1.61193 14.5 1.75 14.5H15.25C15.6642 14.5 16 14.8358 16 15.25C16 15.6642 15.6642 16 15.25 16H1.75C0.783501 16 0 15.2165 0 14.25V1.75ZM4.75 6.5C4.75 6.08579 5.08579 5.75 5.5 5.75H9.25C9.66421 5.75 10 6.08579 10 6.5C10 6.91421 9.66421 7.25 9.25 7.25H8.25V12.5C8.25 12.9142 7.91421 13.25 7.5 13.25C7.08579 13.25 6.75 12.9142 6.75 12.5V7.25H5.5C5.08579 7.25 4.75 6.91421 4.75 6.5ZM11.2757 6.58011C11.6944 6.08164 12.3507 5.75 13.25 5.75C14.0849 5.75 14.7148 6.03567 15.1394 6.48481C15.4239 6.78583 15.4105 7.26052 15.1095 7.54505C14.8085 7.82958 14.3338 7.81621 14.0493 7.51519C13.9394 7.39898 13.7204 7.25 13.25 7.25C12.7493 7.25 12.5306 7.41836 12.4243 7.54489C12.2934 7.70065 12.25 7.896 12.25 8C12.25 8.104 12.2934 8.29935 12.4243 8.45511C12.5306 8.58164 12.7493 8.75 13.25 8.75C13.3257 8.75 13.3988 8.76121 13.4676 8.78207C14.1307 8.87646 14.6319 9.17251 14.9743 9.58011C15.3684 10.0493 15.5 10.604 15.5 11C15.5 11.396 15.3684 11.9507 14.9743 12.4199C14.5556 12.9184 13.8993 13.25 13 13.25C12.1651 13.25 11.5352 12.9643 11.1106 12.5152C10.8261 12.2142 10.8395 11.7395 11.1405 11.4549C11.4415 11.1704 11.9162 11.1838 12.2007 11.4848C12.3106 11.601 12.5296 11.75 13 11.75C13.5007 11.75 13.7194 11.5816 13.8257 11.4551C13.9566 11.2993 14 11.104 14 11C14 10.896 13.9566 10.7007 13.8257 10.5449C13.7194 10.4184 13.5007 10.25 13 10.25C12.9243 10.25 12.8512 10.2388 12.7824 10.2179C12.1193 10.1235 11.6181 9.82749 11.2757 9.41989C10.8816 8.95065 10.75 8.396 10.75 8C10.75 7.604 10.8816 7.04935 11.2757 6.58011Z"
+              fill="#000000"></path>
+          </g>
+        </svg>
+      </div>
     </div>
-  </main>
+    <div class="bg-black mx-auto max-w-5xl rounded-lg flex flex-col items-center text-center p-8 mt-20" x-transition
+      :class="{'md:px-2 md:py-10': started, 'md:px-20 md:py-20': !started}">
+      <h2 class="text-white text-4xl md:text-6xl tracking-tight" x-show="!started">
+        Accuracy up to 85%
+      </h2>
+      <p class="text-slate-400 mt-4 text-lg md:text-xl" x-show="!started">
+        Using Tensorflow and Keras, Caledi can classify cassava leaf disease up to 85% accuracy.
+      </p>
+      <div class="flex mt-5" x-show="!started">
+        <button
+          class="rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-5 py-2.5 bg-white text-black border-2 border-transparent"
+          @click="start">Get
+          Started
+        </button>
+      </div>
+
+      <div x-show="started">
+        <video id="main-cam" class="w-full z-100 rounded-lg" x-show="!finished"></video>
+        <img :src="base64image" class="w-full z-100 rounded-lg" x-show="finished" />
+        <div class="mx-auto mt-2 pt-6 text-center" x-show="!processing && !finished">
+          <button type="button"
+            class="text-white hover:bg-white hover:text-black border border-white focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mt-5 ml-5"
+            @click="submit">Submit</button>
+          <div class="inline-block mx-5 text-white text-lg">- atau -</div>
+          <input type="file" name="image" id="image" class="hidden" accept="image/*" @change="upload" />
+          <label for="image"
+            class="text-white hover:bg-white hover:text-black border border-white focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mt-5 ml-5 cursor-pointer">Upload
+            Image</label>
+          <button @click="urlfile"
+            class="text-white hover:bg-white hover:text-black border border-white focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mt-5 ml-5">Upload
+            Image via URL</button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="bg-white border-2 border-black mx-auto max-w-5xl rounded-lg flex flex-col items-center text-center p-8 mt-20"
+      x-show="finished">
+      <h2 class="text-black text-4xl md:text-6xl tracking-tight">
+        Result
+      </h2>
+      <div class="flex mt-5" x-show="!is_unknown">
+        <table class="table-auto max-w-5xl mx-auto">
+          <thead>
+            <tr>
+              <th class="px-4 py-2 text-black">Disease</th>
+              <th class="px-4 py-2 text-black">Accuracy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <template x-for="prediction in predictions" :key="prediction.disease">
+              <tr>
+                <td class="border border-black px-4 py-2 text-black" :class="{'font-bold': prediction.is_max}"
+                  x-text="prediction.disease"></td>
+                <td class="border border-black px-4 py-2 text-black" :class="{'font-bold': prediction.is_max}"
+                  x-text="prediction.accuracy"></td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+
+      <div x-show="is_unknown" class="mt-5">
+        <p class="text-black text-xl font-bold">We can't detect the disease. Please try again. Make sure the image is
+          clear and the disease is visible.</p>
+      </div>
+
+      <div class="flex mt-10">
+        <button
+          class="rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-5 py-2.5 ml-5 bg-black text-white border border-transparent flex items-center"
+          @click="retry">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            class="h-5 w-5 mr-2">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18">
+            </path>
+          </svg>
+          Retry
+        </button>
+        <button
+          class="rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-5 py-2.5 ml-5 bg-white border border-black text-black flex items-center"
+          @click="refresh">
+          Refresh
+        </button>
+      </div>
+    </div>
+
+    <footer class="my-20">
+      <p class="text-center text-sm text-slate-500">
+        Copyright © 2023 Caledi. All rights reserved.
+      </p>
+      <p class="text-center text-xs text-slate-500 mt-1">
+        Made by <a href="https://hiskia.app" target="_blank" rel="noopener" class="hover:underline">
+          Hiskia Pratama
+        </a>
+      </p>
+    </footer>
+    <script>
+      'use strict'
+    
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('cam', () => ({
+            started: false,
+            processing: false,
+            finished: false,
+            base64image: null,
+            predictions: [],
+            is_unknown: false,
+            video: document.getElementById('main-cam'),
+            
+            async start() {
+              this.started = true
+              const constraints = {
+                  audio: false,
+                  video: {
+                      width: 640,
+                      height: 420
+                  }
+              };
+
+              try {
+                    const stream = await navigator.mediaDevices.getUserMedia(constraints)
+                    window.stream = stream
+                    this.video.srcObject = stream
+                    this.video.play()
+                } catch (e) {
+                    console.error('navigator.getUserMedia error:', e)
+                }
+            },
+
+            async submit() {
+                const canvas = document.createElement('canvas')
+                canvas.width = this.video.videoWidth
+                canvas.height = this.video.videoHeight
+                canvas.getContext('2d').drawImage(this.video, 0, 0, canvas.width, canvas.height)
+                const data = canvas.toDataURL('image/png')
+                this.video.pause()
+                this.base64image = data
+
+                const base64 = data.split(',')[1]
+                await this.predict(base64)
+            },
+
+            async upload(e) {
+              const file = e.target.files[0]
+              const reader = new FileReader()
+
+              reader.onload = async () => {
+                this.base64image = reader.result
+                const base64 = this.base64image.split(',')[1]
+                await this.predict(base64)
+              }
+
+              reader.readAsDataURL(file)
+            },
+
+            async urlfile() {
+              const url = prompt('Please enter the image URL')
+              if (url) {
+                try {
+                  const response = await fetch(url)
+                  const blob = await response.blob()
+                  const reader = new FileReader()
+
+                  reader.onload = async () => {
+                    this.base64image = reader.result
+                    const base64 = this.base64image.split(',')[1]
+                    await this.predict(base64)
+                  }
+
+                  reader.readAsDataURL(blob)
+                } catch (error) {
+                  console.error(error)
+                }
+              }
+            },
+
+            async predict(base64) {
+              this.processing = true
+              this.finished = false
+              this.predictions = []
+
+              try {
+                const response = await fetch('/store', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    image: base64
+                  })
+                })
+
+                const res = await response.json()
+
+                if (res.result.name == 'unknown') {
+                  this.is_unknown = true
+                }else{
+                  let predictions = []
+                  for (const [key, value] of Object.entries(res.prediction)) {
+                    predictions.push({
+                      disease: key.replace(/[_-]/g, ' ').replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase()))),
+                      accuracy: (value * 100).toFixed(2) + '%',
+                      is_max: res.result.name == key
+                    })
+                  }
+
+                  this.predictions = predictions
+                }
+                
+              } catch (error) {
+                console.error(error)
+              } finally {
+                this.processing = false
+                this.finished = true
+              }
+
+              console.log(this.predictions)
+            },
+
+            retry() {
+                this.started = true
+                this.finished = false
+                this.base64image = null
+                this.predictions = []
+                this.is_unknown = false
+                this.video.play()
+            },
+
+            refresh() {
+                window.location.href = '/'
+            }
+        }))
+    })
+    </script>
 </body>
+
 </html>
