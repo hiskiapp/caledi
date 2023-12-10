@@ -12,7 +12,7 @@ export default class MainController {
     const payload = await request.validate(Predict)
 
     try {
-      const caledi = new Caledi('20')
+      const caledi = new Caledi('30')
       const imageBuffer = Buffer.from(payload.image, 'base64')
       const image = new Image()
       image.src = imageBuffer

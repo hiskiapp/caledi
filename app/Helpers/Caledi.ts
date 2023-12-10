@@ -18,9 +18,9 @@ export class Caledi {
 
   private async loadModel(type: '20' | '30'): Promise<tf.LayersModel> {
     if (type === '20') {
-      return tf.loadLayersModel('file://./resources/models/20epochs/model.json')
+      return tf.loadLayersModel('file://./resources/models/20/model.json')
     } else {
-      return tf.loadLayersModel('file://./resources/models/30epochs/model.json')
+      return tf.loadLayersModel('file://./resources/models/30/model.json')
     }
   }
 
