@@ -1,5 +1,5 @@
 import { Caledi } from '../../Helpers/Caledi'
-import { schema, rules } from '@ioc:Adonis/Core/Validator'
+import Predict from '../../Validators/PredictValidator'
 import { Image } from 'canvas'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
@@ -9,11 +9,7 @@ export default class MainController {
   }
 
   public async store({ request, response }: HttpContextContract) {
-    const payload = await request.validate({
-      schema: schema.create({
-        image: schema.string({}, [rules.required()]),
-      }),
-    })
+    const payload = await request.validate(Predict)
 
     try {
       const caledi = new Caledi('20')
@@ -33,7 +29,7 @@ export default class MainController {
 
       return prediction
     } catch (error) {
-      return response.badRequest(error.messages)
+      return response.abort(error)
     }
   }
 }
