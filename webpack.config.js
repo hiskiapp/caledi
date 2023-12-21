@@ -1,5 +1,6 @@
 const { join } = require('path')
 const Encore = require('@symfony/webpack-encore')
+const WorkboxPlugin = require('workbox-webpack-plugin')
 
 /*
 |--------------------------------------------------------------------------
@@ -202,6 +203,14 @@ config.infrastructureLogging = {
   level: 'warn',
 }
 config.stats = 'errors-warnings'
+if (process.env.NODE_ENV === 'production') {
+  config.plugins.push(
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true,
+    })
+  )
+}
 
 /*
 |--------------------------------------------------------------------------

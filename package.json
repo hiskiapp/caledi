@@ -60,6 +60,7 @@
     "typescript": "~4.6",
     "webpack": "^5.72",
     "webpack-cli": "^4.9.1",
+    "workbox-webpack-plugin": "^7.0.0",
     "youch": "^3.3.3",
     "youch-terminal": "^2.2.3"
   },
@@ -73,6 +74,7 @@
     "@tensorflow/tfjs-node": "^4.14.0",
     "alpinejs": "^3.13.3",
     "canvas": "^2.11.2",
+    "lodash": "^4.17.21",
     "proxy-addr": "^2.0.7",
     "reflect-metadata": "^0.1.14",
     "source-map-support": "^0.5.21"

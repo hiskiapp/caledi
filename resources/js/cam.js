@@ -1,3 +1,5 @@
+'use strict'
+
 document.addEventListener('alpine:init', () => {
   Alpine.data('cam', () => ({
     started: false,
@@ -29,29 +31,14 @@ document.addEventListener('alpine:init', () => {
     },
 
     async submit() {
-      const canvas = document.createElement('canvas')
-      canvas.width = this.video.videoWidth
-      canvas.height = this.video.videoHeight
-      canvas.getContext('2d').drawImage(this.video, 0, 0, canvas.width, canvas.height)
-      const data = canvas.toDataURL('image/png')
-      this.video.pause()
-      this.base64image = data
-
-      const base64 = data.split(',')[1]
-      await this.predict(base64)
+      this.base64image = this.captureVideoFrame()
+      await this.predict(this.getBase64Image())
     },
 
     async upload(e) {
       const file = e.target.files[0]
-      const reader = new FileReader()
-
-      reader.onload = async () => {
-        this.base64image = reader.result
-        const base64 = this.base64image.split(',')[1]
-        await this.predict(base64)
-      }
-
-      reader.readAsDataURL(file)
+      this.base64image = await this.readFileAsDataURL(file)
+      await this.predict(this.getBase64Image())
     },
 
     async urlfile() {
@@ -60,19 +47,39 @@ document.addEventListener('alpine:init', () => {
         try {
           const response = await fetch(url)
           const blob = await response.blob()
-          const reader = new FileReader()
-
-          reader.onload = async () => {
-            this.base64image = reader.result
-            const base64 = this.base64image.split(',')[1]
-            await this.predict(base64)
-          }
-
-          reader.readAsDataURL(blob)
+          this.base64image = await this.readFileAsDataURL(blob)
+          await this.predict(this.getBase64Image())
         } catch (error) {
           console.error(error)
         }
       }
+    },
+
+    captureVideoFrame() {
+      const canvas = document.createElement('canvas')
+      canvas.width = this.video.videoWidth
+      canvas.height = this.video.videoHeight
+      canvas.getContext('2d').drawImage(this.video, 0, 0, canvas.width, canvas.height)
+      this.video.pause()
+      return canvas.toDataURL('image/png')
+    },
+
+    readFileAsDataURL(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader()
+
+        reader.onload = () => {
+          resolve(reader.result)
+        }
+
+        reader.onerror = reject
+
+        reader.readAsDataURL(file)
+      })
+    },
+
+    getBase64Image() {
+      return this.base64image.split(',')[1]
     },
 
     async predict(base64) {
@@ -96,18 +103,7 @@ document.addEventListener('alpine:init', () => {
         if (res.result.name === 'unknown') {
           this.is_unknown = true
         } else {
-          let predictions = []
-          for (const [key, value] of Object.entries(res.prediction)) {
-            predictions.push({
-              disease: key
-                .replace(/[_-]/g, ' ')
-                .replace(/\w\S*/g, (w) => w.replace(/^\w/, (c) => c.toUpperCase())),
-              accuracy: (value * 100).toFixed(2) + '%',
-              is_max: res.result.name === key,
-            })
-          }
-
-          this.predictions = predictions
+          this.predictions = this.formatPredictions(res)
         }
       } catch (error) {
         console.error(error)
@@ -117,6 +113,16 @@ document.addEventListener('alpine:init', () => {
       }
 
       console.log(this.predictions)
+    },
+
+    formatPredictions(res) {
+      return Object.entries(res.prediction).map(([key, value]) => ({
+        disease: key
+          .replace(/[_-]/g, ' ')
+          .replace(/\w\S*/g, (w) => w.replace(/^\w/, (c) => c.toUpperCase())),
+        accuracy: (value * 100).toFixed(2) + '%',
+        is_max: res.result.name === key,
+      }))
     },
 
     retry() {
@@ -129,7 +135,7 @@ document.addEventListener('alpine:init', () => {
     },
 
     refresh() {
-      window.location.href = '/'
+      window.location.reload()
     },
   }))
 })
